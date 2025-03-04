@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>xss demo</title>
+	</head>
+	<body>
+		<h1>xss demo</h1>
+		<form onsubmit="addComment(event)">
+			<textarea id="comment" placeholder="Leave a comment" required></textarea>
+			<button type="submit">Submit</button>
+		</form>
+		<h2>Comments:</h2>
+		<ul id="comments"></ul>
+
+		<script>
+			function addComment(event) {
+				event.preventDefault(); //阻止form送出
+				const comment = document.getElementById('comment').value;
+				const commentList = document.getElementById('comments');
+				
+				commentList.innerHTML += `<li>${comment}</li>`;
+			}
+		</script>
+	</body>
+</html>
